@@ -23,7 +23,7 @@ blob = bucket.blob('glove.6B.300d.txt')
 with open('static/glove_temp.txt', 'wb') as glove_temp:
     storage_client.download_blob_to_file(blob, glove_temp)
 
-app = Flask(__name__, static_folder='./public', static_url_path='/')
+app = Flask(__name__)
 
 # glove_file = 'api/static/glove/glove.6B.300d.txt'
 glove_file = 'static/glove_temp.txt'
@@ -66,11 +66,6 @@ def send_ASL():
     except:
         outputText = 'Could not translate...'
     return {'outputText': outputText}
-
-
-@app.route('/')
-def index():
-    app.send_static_file('index.html')
 
 
 if __name__ == '__main__':
