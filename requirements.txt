@@ -13,6 +13,8 @@ future==0.18.2
 gensim==3.8.3
 google-cloud-storage==1.29.0
 gunicorn
+https://download.pytorch.org/whl/cpu/torch-1.5.1%2Bcpu-cp36-cp36m-linux_x86_64.whl
+https://download.pytorch.org/whl/cpu/torchvision-0.6.1%2Bcpu-cp36-cp36m-linux_x86_64.whl
 idna==2.9
 itsdangerous==1.1.0
 jmespath==0.10.0
@@ -28,6 +30,5 @@ scipy==1.4.1
 setuptools==40.8.0
 six==1.15.0
 smart-open==2.0.0
-torchvision==0.3.0
 tqdm==4.46.1
 urllib3==1.25.9
