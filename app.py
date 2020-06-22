@@ -20,13 +20,13 @@ f.close()
 bucket = storage_client.get_bucket('glove-vectors-300d')
 blob = bucket.blob('glove.6B.300d.txt')
 
-with open('api/static/glove_temp.txt', 'wb') as glove_temp:
+with open('static/glove_temp.txt', 'wb') as glove_temp:
     storage_client.download_blob_to_file(blob, glove_temp)
 
 app = Flask(__name__, static_folder='./public', static_url_path='/')
 
 # glove_file = 'api/static/glove/glove.6B.300d.txt'
-glove_file = 'api/static/glove_temp.txt'
+glove_file = 'static/glove_temp.txt'
 # word2vec_glove_file = get_tmpfile("glove.6B.300d.word2vec.txt")
 word2vec_glove_file = get_tmpfile("glove_temp.txt")
 glove2word2vec(glove_file, word2vec_glove_file)
