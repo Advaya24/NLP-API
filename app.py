@@ -7,8 +7,8 @@ from gensim.scripts.glove2word2vec import glove2word2vec
 from google.cloud import storage
 from google.oauth2 import service_account
 import torch
-from api.nmt_model import *
-from api.run import beam_search
+from nmt_model import *
+from run import beam_search
 import nltk
 import tempfile
 
