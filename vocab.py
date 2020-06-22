@@ -25,7 +25,7 @@ from itertools import chain
 import json
 import torch
 from typing import List
-from api.utils import read_corpus, pad_sents
+from utils import read_corpus, pad_sents
 
 
 class VocabEntry(object):

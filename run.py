@@ -49,12 +49,12 @@ import time
 
 from docopt import docopt
 from nltk.translate.bleu_score import corpus_bleu, sentence_bleu, SmoothingFunction
-from api.nmt_model import Hypothesis, NMT
+from nmt_model import Hypothesis, NMT
 import numpy as np
 from typing import List, Tuple, Dict, Set, Union
 from tqdm import tqdm
-from api.utils import read_corpus, batch_iter
-from api.vocab import Vocab, VocabEntry
+from utils import read_corpus, batch_iter
+from vocab import Vocab, VocabEntry
 
 import torch
 import torch.nn.utils

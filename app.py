@@ -32,7 +32,7 @@ word2vec_glove_file = get_tmpfile("glove_temp.txt")
 glove2word2vec(glove_file, word2vec_glove_file)
 model = KeyedVectors.load_word2vec_format(word2vec_glove_file)
 
-params = torch.load('api/static/model.bin', map_location=lambda storage, loc: storage)
+params = torch.load('static/model.bin', map_location=lambda storage, loc: storage)
 args = params['args']
 nmt_model = NMT(vocab=params['vocab'], **args)
 nmt_model.load_state_dict(params['state_dict'])
