@@ -12,23 +12,23 @@ from run import beam_search
 import nltk
 import tempfile
 
-f = tempfile.NamedTemporaryFile(mode='w')
-f.write(os.environ['GOOGLE_APPLICATION_CREDENTIALS'])
-f.flush()
-storage_client = storage.Client.from_service_account_json(f.name)
-f.close()
-bucket = storage_client.get_bucket('glove-vectors-300d')
-blob = bucket.blob('glove.6B.300d.txt')
+# f = tempfile.NamedTemporaryFile(mode='w')
+# f.write(os.environ['GOOGLE_APPLICATION_CREDENTIALS'])
+# f.flush()
+# storage_client = storage.Client.from_service_account_json(f.name)
+# f.close()
+# bucket = storage_client.get_bucket('glove-vectors-300d')
+# blob = bucket.blob('glove.6B.300d.txt')
 
-with open('static/glove_temp.txt', 'wb') as glove_temp:
-    storage_client.download_blob_to_file(blob, glove_temp)
+# with open('static/glove.twitter.27B.50d.txt', 'wb') as glove_temp:
+#     storage_client.download_blob_to_file(blob, glove_temp)
 
 app = Flask(__name__)
 
 # glove_file = 'api/static/glove/glove.6B.300d.txt'
-glove_file = 'static/glove_temp.txt'
+glove_file = 'static/glove.twitter.27B.50d.txt'
 # word2vec_glove_file = get_tmpfile("glove.6B.300d.word2vec.txt")
-word2vec_glove_file = get_tmpfile("glove_temp.txt")
+word2vec_glove_file = get_tmpfile("glove.twitter.27B.50d.txt")
 glove2word2vec(glove_file, word2vec_glove_file)
 model = KeyedVectors.load_word2vec_format(word2vec_glove_file)
 
