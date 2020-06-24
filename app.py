@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, request, json
+from flask import Flask, request
 from gensim.test.utils import get_tmpfile
 from gensim.models import KeyedVectors
 from gensim.scripts.glove2word2vec import glove2word2vec
