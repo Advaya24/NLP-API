@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask, request
+from flask_cors import CORS, cross_origin
 from gensim.test.utils import get_tmpfile
 from gensim.models import KeyedVectors
 from gensim.scripts.glove2word2vec import glove2word2vec
@@ -24,6 +25,8 @@ import tempfile
 #     storage_client.download_blob_to_file(blob, glove_temp)
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 # glove_file = 'api/static/glove/glove.6B.300d.txt'
 # glove_file = 'static/glove.twitter.27B.50d.txt'
@@ -55,6 +58,7 @@ def send_analogy():
 
 
 @app.route('/api/ASL', methods=['POST'])
+@cross_origin()
 def send_ASL():
     print(request.json['englishInputText'])
     line = request.json['englishInputText']
