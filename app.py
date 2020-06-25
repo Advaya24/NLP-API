@@ -69,7 +69,8 @@ def send_ASL():
         outputText = ' '.join(
             beam_search(model, [nltk.word_tokenize(line)], beam_size=5,
                         max_decoding_time_step=70)[0][0].value)
-    except:
+    except Exception as e:
+        print(e)
         outputText = 'Could not translate...'
     return {'outputText': outputText}
 
