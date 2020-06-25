@@ -26,9 +26,11 @@ import tempfile
 app = Flask(__name__)
 
 # glove_file = 'api/static/glove/glove.6B.300d.txt'
-glove_file = 'static/glove.twitter.27B.50d.txt'
+# glove_file = 'static/glove.twitter.27B.50d.txt'
+glove_file = 'static/glove_example.txt'
 # word2vec_glove_file = get_tmpfile("glove.6B.300d.word2vec.txt")
-word2vec_glove_file = get_tmpfile("glove.twitter.27B.50d.txt")
+# word2vec_glove_file = get_tmpfile("glove.twitter.27B.50d.txt")
+word2vec_glove_file = get_tmpfile("glove_example.txt")
 glove2word2vec(glove_file, word2vec_glove_file)
 model = KeyedVectors.load_word2vec_format(word2vec_glove_file)
 
