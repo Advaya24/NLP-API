@@ -37,8 +37,8 @@ glove_file = 'static/glove.twitter.27B.50d.txt'
 model = None
 with open("glove.twitter.27B.50d.txt", 'wb') as word2vec_glove_file:
 # glove.twitter.27B.50d.txt = get_tmpfile("glove_example.txt")
-    glove2word2vec(glove_file, "glove.twitter.27B.50d.txt")
-    print(getsizeof(word2vec_glove_file))
+#     glove2word2vec(glove_file, "glove.twitter.27B.50d.txt")
+#     print(getsizeof(word2vec_glove_file))
     model = KeyedVectors.load_word2vec_format("glove.twitter.27B.50d.txt")
     print(getsizeof(model))
 
