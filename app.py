@@ -1,4 +1,5 @@
 import os
+from sys import getsizeof
 
 from flask import Flask, request
 from flask_cors import CORS, cross_origin
@@ -29,13 +30,17 @@ cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 # glove_file = 'api/static/glove/glove.6B.300d.txt'
-# glove_file = 'static/glove.twitter.27B.50d.txt'
-glove_file = 'static/glove_example.txt'
-# word2vec_glove_file = get_tmpfile("glove.6B.300d.word2vec.txt")
-# word2vec_glove_file = get_tmpfile("glove.twitter.27B.50d.txt")
-word2vec_glove_file = get_tmpfile("glove_example.txt")
-glove2word2vec(glove_file, word2vec_glove_file)
-model = KeyedVectors.load_word2vec_format(word2vec_glove_file)
+glove_file = 'static/glove.twitter.27B.50d.txt'
+# glove_file = 'static/glove_example.txt'
+# glove.twitter.27B.50d.txt = get_tmpfile("glove.6B.300d.word2vec.txt")
+# glove.twitter.27B.50d.txt = get_tmpfile("glove.twitter.27B.50d.txt")
+model = None
+with open("glove.twitter.27B.50d.txt", 'wb') as word2vec_glove_file:
+# glove.twitter.27B.50d.txt = get_tmpfile("glove_example.txt")
+    glove2word2vec(glove_file, "glove.twitter.27B.50d.txt")
+    print(getsizeof(word2vec_glove_file))
+    model = KeyedVectors.load_word2vec_format("glove.twitter.27B.50d.txt")
+    print(getsizeof(model))
 
 params = torch.load('static/model.bin', map_location=lambda storage, loc: storage)
 args = params['args']
