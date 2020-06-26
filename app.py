@@ -39,7 +39,7 @@ with open("static/glove.twitter.27B.50d.txt", 'rb') as word2vec_glove_file:
 # aglove.twitter.27B.50d.txt = get_tmpfile("glove_example.txt")
 #     glove2word2vec(glove_file, "static/glove.twitter.27B.50d.txt")
 #     print(getsizeof(word2vec_glove_file))
-    model = KeyedVectors.load_word2vec_format("static/glove.twitter.27B.50d.txt")
+    model = KeyedVectors.load_word2vec_format("static/glove.twitter.27B.50d.txt", limit=240000)
     print(getsizeof(model))
 
 params = torch.load('static/model.bin', map_location=lambda storage, loc: storage)
