@@ -22,7 +22,7 @@ import tempfile
 # bucket = storage_client.get_bucket('glove-vectors-300d')
 # blob = bucket.blob('glove.6B.300d.txt')
 
-# with open('static/glove.twitter.27B.50d.txt', 'wb') as glove_temp:
+# with open('static/aglove.twitter.27B.50d.txt', 'wb') as glove_temp:
 #     storage_client.download_blob_to_file(blob, glove_temp)
 
 app = Flask(__name__)
@@ -30,16 +30,16 @@ cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 # glove_file = 'api/static/glove/glove.6B.300d.txt'
-glove_file = 'static/glove.twitter.27B.50d.txt'
+glove_file = 'static/aglove.twitter.27B.50d.txt'
 # glove_file = 'static/glove_example.txt'
-# glove.twitter.27B.50d.txt = get_tmpfile("glove.6B.300d.word2vec.txt")
-# glove.twitter.27B.50d.txt = get_tmpfile("glove.twitter.27B.50d.txt")
+# aglove.twitter.27B.50d.txt = get_tmpfile("glove.6B.300d.word2vec.txt")
+# aglove.twitter.27B.50d.txt = get_tmpfile("aglove.twitter.27B.50d.txt")
 model = None
-with open("glove.twitter.27B.50d.txt", 'wb') as word2vec_glove_file:
-# glove.twitter.27B.50d.txt = get_tmpfile("glove_example.txt")
-#     glove2word2vec(glove_file, "glove.twitter.27B.50d.txt")
+with open("static/glove.twitter.27B.50d.txt", 'rb') as word2vec_glove_file:
+# aglove.twitter.27B.50d.txt = get_tmpfile("glove_example.txt")
+#     glove2word2vec(glove_file, "static/glove.twitter.27B.50d.txt")
 #     print(getsizeof(word2vec_glove_file))
-    model = KeyedVectors.load_word2vec_format("glove.twitter.27B.50d.txt")
+    model = KeyedVectors.load_word2vec_format("static/glove.twitter.27B.50d.txt")
     print(getsizeof(model))
 
 params = torch.load('static/model.bin', map_location=lambda storage, loc: storage)
